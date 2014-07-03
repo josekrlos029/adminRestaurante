@@ -162,13 +162,12 @@ and open the template in the editor.
                 
                 var idRestaurante = localStorage.getItem("idRestaurante");
                 var regid = localStorage.getItem("regId");
-                alert(idRestaurante+  "  " + regid);
                 var data = {
                     regId: regid,
                     idRestaurante: idRestaurante
                 };
-                //var url = "http://tudomicilio.liceogalois.com/restaurante/updateRegId";
-                var url = "http://192.168.1.33/domicilios/restaurante/updateRegId";
+                var url = "http://tudomicilio.liceogalois.com/restaurante/updateRegId";
+                //var url = "http://192.168.1.33/domicilios/restaurante/updateRegId";
                 $.ajax({
                     type: "POST",
                     url: url,
