@@ -132,8 +132,8 @@ and open the template in the editor.
                     clave: $("#clave").val()
                 };
                 
-                var url = "http://192.168.1.33/domicilios/restaurante/loginRestaurante";
-                
+                var url = "http://tudomicilio.liceogalois.com/restaurante/loginRestaurante";
+                //var url = "http://192.168.1.33/domicilios/restaurante/loginRestaurante";
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -149,7 +149,7 @@ and open the template in the editor.
                             }else if(json.msj== "no"){
                                 alert("Error al ingresar usuario o contraseña, intenta nuevamente.");
                             }else{
-                                alert("Error con el servidor, intente mas tarde");
+                                alert("Error al ingresar usuario o contraseña, intenta nuevamente.");
                             }
                                 
                         });
