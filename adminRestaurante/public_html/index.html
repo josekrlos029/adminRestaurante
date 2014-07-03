@@ -126,7 +126,19 @@ and open the template in the editor.
             }
             
             function envio(){
-                
+                 var $this = $(this),
+                        theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+                        msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+                        textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+                        textonly = !!$this.jqmData("textonly");
+                html = $this.jqmData("html") || "";
+                $.mobile.loading("show", {
+                    text: msgText,
+                    textVisible: textVisible,
+                    theme: theme,
+                    textonly: textonly,
+                    html: html
+                });
                 var data= {
                     correo: $("#correo").val(),
                     clave: $("#clave").val()
@@ -149,8 +161,10 @@ and open the template in the editor.
                             }else if(json.msj== "no"){
                                 alert("Error al ingresar usuario o contraseña, intenta nuevamente.");
                             }else{
-                                alert("Error al ingresar usuario o contraseña, intenta nuevamente.");
+                                alert("Error En el servidor");
                             }
+                            
+                            $.mobile.loading("hide");
                                 
                         });
                 
@@ -166,7 +180,7 @@ and open the template in the editor.
             <div role="main" class="ui-content">
                 <h3>Iniciar Sesión</h3>
                 <label for="correo" class="ui-hidden-accessible">Text Input:</label>
-                <input type="text" name="correo" id="correo" placeholder="Correo" value="">
+                <input type="email" name="correo" id="correo" placeholder="Correo" value="">
                 <label for="clave" class="ui-hidden-accessible">Text Input:</label>
                 <input type="password" name="clave" id="clave" placeholder="Contraseña" value="">
                 <a style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" href="#" onclick="envio();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Iniciar Seción</a>
