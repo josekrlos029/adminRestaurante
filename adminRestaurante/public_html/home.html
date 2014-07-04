@@ -79,8 +79,7 @@ and open the template in the editor.
                             //$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 
                             // if the notification contains a soundname, play it.
-                            //var my_media = new Media("/android_asset/www/" + e.soundname);
-                            //my_media.play();
+                            
                         }
                         else
                         {  // otherwise we were launched because the user touched a notification in the notification tray.
@@ -94,7 +93,7 @@ and open the template in the editor.
                                 //$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
                             }
                         }
-                         alert(e.payload.message + ",  " + e.payload.otro ); 
+                         //alert(e.payload.message + ",  " + e.payload.otro ); 
                         //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
                         //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                         break;
@@ -107,6 +106,8 @@ and open the template in the editor.
                         //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
                         break;
                 }
+                var my_media = new Media("recursos/" + e.soundname);
+                my_media.play();
             }
 
             function onNotificationAPN(event) {
@@ -125,67 +126,6 @@ and open the template in the editor.
                 {
                     pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
                 }
-            }
-
-            function envio() {
-
-                var data = {
-                    correo: $("#correo").val(),
-                    clave: $("#clave").val()
-                };
-
-                var url = "http://tudomicilio.liceogalois.com/restaurante/loginRestaurante";
-                //var url = "http://192.168.1.33/domicilios/restaurante/loginRestaurante";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: data
-                })
-                        .done(function(msg) {
-                            var json = eval("(" + msg + ")");
-                            if (json.msj == "exito") {
-
-                                localStorage.setItem("idRestaurante", json.id);
-                                location.href = "home.html";
-
-                            } else if (json.msj == "no") {
-                                alert("Error al ingresar usuario o contraseña, intenta nuevamente.");
-                            } else {
-                                alert("Error con el servidor, intente mas tarde");
-                            }
-
-                        });
-
-            }
-            
-            function update(){
-                
-                var idRestaurante = localStorage.getItem("idRestaurante");
-                var regid = localStorage.getItem("regId");
-                var data = {
-                    regId: regid,
-                    idRestaurante: idRestaurante
-                };
-                var url = "http://tudomicilio.liceogalois.com/restaurante/updateRegId";
-                //var url = "http://192.168.1.33/domicilios/restaurante/updateRegId";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: data
-                })
-                        .done(function(msg) {
-                            var json = eval("(" + msg + ")");
-                            if(json.msj== "exito"){
-                                alert("ok");
-                                
-                            }else if(json.msj== "no"){
-                                alert("No puedes recibir pedidos, intenta ingresando nuevamente.");
-                            }else{
-                                alert("No puedes recibir pedidos, intenta ingresando nuevamente.");
-                            }
-                                
-                        });
-                
             }
         </script>
     </head>
