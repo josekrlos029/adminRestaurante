@@ -75,25 +75,25 @@ and open the template in the editor.
                         // you might want to play a sound to get the user's attention, throw up a dialog, etc.
                         if (e.foreground)
                         {
-                            
+
                             //$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 
                             // if the notification contains a soundname, play it.
-                            
+
                         }
                         else
                         {  // otherwise we were launched because the user touched a notification in the notification tray.
                             if (e.coldstart)
                             {
                                 //$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
-                                
+
                             }
                             else
                             {
                                 //$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
                             }
                         }
-                         //alert(e.payload.message + ",  " + e.payload.otro ); 
+                        //alert(e.payload.message + ",  " + e.payload.otro ); 
                         //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
                         //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                         break;
@@ -106,7 +106,7 @@ and open the template in the editor.
                         //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
                         break;
                 }
-                var my_media = new Media("recursos/beep.wav");
+                var my_media = new Media("/android_asset/www/recursos/beep.wav");
                 my_media.play();
             }
 
