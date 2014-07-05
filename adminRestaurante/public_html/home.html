@@ -23,6 +23,7 @@ and open the template in the editor.
 
             function onDeviceReady() {
                 update();
+                cargarPedidios();
                 var pushNotification = window.plugins.pushNotification;
 
                 if (device.platform == 'android' || device.platform == 'Android')
@@ -106,8 +107,6 @@ and open the template in the editor.
                         //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
                         break;
                 }
-                var audio = new Audio('recursos/beep.wav');
-                audio.play();
             }
 
             function onNotificationAPN(event) {
@@ -130,6 +129,34 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div data-role="page" id="pagina">
+
+            <div data-role="header" data-position="fixed" data-fullscreen="false">
+                <a href="#menu" style="border: none; background-color: #cc0000; box-shadow: none;" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-a ui-btn-inline">Menù</a>
+                <h3>Tu Domicilio</h3>
+                <a href="#" style="border: none; background-color: #cc0000;  box-shadow: none;" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-notext ui-btn-a ui-btn-inline">Buscar</a>
+            </div>
+            <div data-role="panel" data-display="overlay" id="menu">
+                <p>Menù !</p>
+            </div><!-- /panel -->
+            <div role="main" class="ui-content">                
+                <div class="ui-body ui-body-a ui-corner-all">
+
+                    <center><h1>Tus Domicilios</h1></center>
+                    <div data-role="tabs" id="tabs">
+                        <div data-role="navbar">
+                            <ul>
+                                <li><a style="font-size: 11px" href="#one" data-ajax="false">Pendientes</a></li>
+                                <li><a style="font-size: 11px" href="#two" data-ajax="false">Aceptados</a></li>
+                                <li><a style="font-size: 11px" href="#three" data-ajax="false">Entregados</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </body>
 </html>
