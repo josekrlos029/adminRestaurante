@@ -81,7 +81,6 @@ function cargarPedidios() {
 }
 
 function popAceptar(idDomicilio) {
-    alert(idDomicilio);
     $("#idAceptar").val(idDomicilio);
 }
 
