@@ -81,6 +81,7 @@ function cargarPedidios() {
 }
 
 function popAceptar(idDomicilio) {
+    alert(":... Por que no entra :/");
     $("#idAceptar").val(idDomicilio);
 }
 
