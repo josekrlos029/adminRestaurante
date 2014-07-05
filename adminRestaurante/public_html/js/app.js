@@ -65,7 +65,7 @@ function cargarPedidios() {
         data: data
     }).done(function(msg) {
 
-        $("#tabs").append(msg);
+        $("#contenido").html(msg);
         setTimeout(function() {
             $('#lista1').trigger('create');
             $('#lista2').trigger('create');
@@ -103,7 +103,7 @@ function aceptar() {
         estado: "a"
     };
     var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
-    //var url = "http://192.168.1.33/domicilios/restaurante/aceptar";
+    //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
         url: url,
@@ -129,7 +129,7 @@ function rechazar() {
         estado: "n"
     };
     var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
-    //var url = "http://192.168.1.33/domicilios/restaurante/aceptar";
+    //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
         url: url,
@@ -156,7 +156,7 @@ function cancelar() {
         estado: "c"
     };
     var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
-    //var url = "http://192.168.1.33/domicilios/restaurante/aceptar";
+    //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
         url: url,
@@ -182,7 +182,7 @@ function listo() {
         estado: "l"
     };
     var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
-    //var url = "http://192.168.1.33/domicilios/restaurante/aceptar";
+    //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
         url: url,
