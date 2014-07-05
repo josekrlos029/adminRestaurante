@@ -70,8 +70,9 @@ function cargarPedidios() {
             $('#lista1').trigger('create');
             $('#lista2').trigger('create');
             $('#lista3').trigger('create');
-            $("#nav").trigger("create");
             $("#uno").click();
+            $("#two").hide();
+            $("#three").hide();
             //$('.boton').button('refresh');
             $(".l1").trigger('create');
             $(".l2").trigger('create');
