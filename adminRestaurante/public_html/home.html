@@ -144,9 +144,9 @@ and open the template in the editor.
 
                     <center><h1>Tus Domicilios</h1></center>
                     <div data-role="tabs" id="tabs">
-                        <div data-role="navbar">
+                        <div data-role="navbar" id="nav">
                             <ul>
-                                <li><a style="font-size: 11px" href="#one" data-ajax="false">Pendientes</a></li>
+                                <li><a style="font-size: 11px" id="uno" href="#one" data-ajax="false">Pendientes</a></li>
                                 <li><a style="font-size: 11px" href="#two" data-ajax="false">Aceptados</a></li>
                                 <li><a style="font-size: 11px" href="#three" data-ajax="false">Entregados</a></li>
                             </ul>
@@ -159,8 +159,8 @@ and open the template in the editor.
                             <a href="#" data-rel="back" id="close1" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
                             <h3>¿Estas seguro de aceptar la solicitud?</h3>
                             <input type="hidden" value="" id="idAceptar">
-                            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" onclick="aceptar()">Aceptar</button>
-                            <button data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" >Cancelar</button>
+                            <button style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" onclick="aceptar()">Aceptar</button>
+                            <button data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-delete" >Cancelar</button>
                         </div>
 
                     </div>
@@ -171,8 +171,8 @@ and open the template in the editor.
                             <a href="#" data-rel="back" id="close4" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
                             <h3>¿Estas seguro de aceptar la solicitud?</h3>
                             <input type="hidden" value="" id="idListo">
-                            <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" onclick="listo()">Aceptar</button>
-                            <button data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" >Cancelar</button>
+                            <button style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" onclick="listo()">Aceptar</button>
+                            <button data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-delete" >Cancelar</button>
                         </div>
 
                     </div>
