@@ -95,8 +95,12 @@ function popCancelar(idDomicilio) {
     $("#idCancelar").val(idDomicilio);
 }
 
-function popListo(idDomicilio) {
+function popUbicacion(idDomicilio) {
     $("#idListo").val(idDomicilio);
+}
+
+function popAceptar(lat, lng, direccion, referencia) {
+    
 }
 
 function aceptar() {

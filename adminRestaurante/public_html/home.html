@@ -15,15 +15,33 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/style.css" />
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDPo5D9SzKfVzIImE3dIVRFfL28zcMPjyc&sensor=true&libraries=geometry"></script>
+        <script src="js/gmaps.js"></script>
         <script src="js/app.js"></script>
         <script src="phonegap.js" type="text/javascript"></script>
         <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>   
         <script>
             document.addEventListener("deviceready", onDeviceReady, false);
 
+            var mapa, lng, lat;
+
             function onDeviceReady() {
                 update();
                 cargarPedidios();
+                
+                lat = '10.4662302';
+                lng = '-73.2398247';
+                mapa = new GMaps({
+                    div: '#mapa',
+                    lat: lat,
+                    lng: lng,
+                    zoom: 13,
+                    zoomControl: false,
+                    panControl: false,
+                    streetViewControl: false,
+                    mapTypeControl: false
+                });
+
                 var pushNotification = window.plugins.pushNotification;
 
                 if (device.platform == 'android' || device.platform == 'Android')
@@ -107,7 +125,7 @@ and open the template in the editor.
                         //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
                         break;
                 }
-               
+
             }
 
             function onNotificationAPN(event) {
@@ -197,6 +215,14 @@ and open the template in the editor.
                             <input type="hidden" value="" id="idCancelar">
                             <button class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" onclick="cancelar()">Aceptar</button>
                             <button data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-right ui-icon-check" >Cancelar</button>
+                        </div>
+
+                    </div>
+                    <div data-role="popup" id="popupUbicacion" data-dismissible="false" data-overlay-theme="b" data-theme="b" class="ui-corner-all">
+
+                        <div>
+                            <p>Holaaaaaaaaaaaaaaaaaaaa !</p>
+                            <div id="mapa"></div>
                         </div>
 
                     </div>
