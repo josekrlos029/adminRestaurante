@@ -99,8 +99,19 @@ function popUbicacion(idDomicilio) {
     $("#idListo").val(idDomicilio);
 }
 
-function popAceptar(lat, lng, direccion, referencia) {
-    
+function popUbicacion(lat, lng, direccion, referencia) {
+    lat = '10.4662302';
+    lng = '-73.2398247';
+    var mapa = new GMaps({
+        div: '#mapa',
+        lat: lat,
+        lng: lng,
+        zoom: 13,
+        zoomControl: false,
+        panControl: false,
+        streetViewControl: false,
+        mapTypeControl: false
+    });
 }
 
 function aceptar() {

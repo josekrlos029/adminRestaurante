@@ -29,19 +29,6 @@ and open the template in the editor.
                 update();
                 cargarPedidios();
                 
-                lat = '10.4662302';
-                lng = '-73.2398247';
-                mapa = new GMaps({
-                    div: '#mapa',
-                    lat: lat,
-                    lng: lng,
-                    zoom: 13,
-                    zoomControl: false,
-                    panControl: false,
-                    streetViewControl: false,
-                    mapTypeControl: false
-                });
-
                 var pushNotification = window.plugins.pushNotification;
 
                 if (device.platform == 'android' || device.platform == 'Android')
