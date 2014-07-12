@@ -23,6 +23,10 @@ and open the template in the editor.
 
             function onDeviceReady() {
                 
+                if(localStorage.getItem("idRestaurante" != null && "idRestaurante" != "")){
+                    location.href = "index.html";
+                }
+                
                 var pushNotification = window.plugins.pushNotification;
 
                 if (device.platform == 'android' || device.platform == 'Android')
@@ -107,6 +111,12 @@ and open the template in the editor.
                 }
                  var my_media = new Media("/android_asset/www/recursos/beep.wav");
                  my_media.play();
+            }
+            
+            function tokenHandler(result) {
+                // Your iOS push server needs to know the token before it can push to this device
+                // here is where you might want to send it the token for later use.
+                localStorage.setItem("token", result);
             }
 
             function onNotificationAPN(event) {

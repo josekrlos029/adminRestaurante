@@ -10,10 +10,18 @@ function update() {
 
     var idRestaurante = localStorage.getItem("idRestaurante");
     var regid = localStorage.getItem("regId");
-    var data = {
-        regId: regid,
-        idRestaurante: idRestaurante
-    };
+    if (regid != "" && regid != null) {
+        var data = {
+            regId: regid,
+            idRestaurante: idRestaurante
+        };
+    }else{
+        var data = {
+            token: localStorage.getItem("token"),
+            idRestaurante: idRestaurante
+        };
+    }
+
     var url = "http://tudomicilio.liceogalois.com/restaurante/updateRegId";
     //var url = "http://192.168.1.33/domicilios/restaurante/updateRegId";
     $.ajax({
