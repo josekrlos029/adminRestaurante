@@ -144,6 +144,7 @@ function aceptar() {
         } else {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
+        $("#close1").click();
 
     });
 }
@@ -170,8 +171,8 @@ function rechazar() {
         } else {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
-
     });
+    $("#close2").click();
 
 }
 
@@ -197,7 +198,7 @@ function cancelar() {
         } else {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
-
+        $("#close3").click();
     });
 }
 
@@ -223,6 +224,7 @@ function listo() {
         } else {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
+        $("#close4").click();
 
     });
 }
