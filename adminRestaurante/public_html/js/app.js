@@ -172,7 +172,8 @@ function rechazar() {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
     });
-    $("#close2").click();
+    $("#close2").click
+    cargarPedidios();
 
 }
 
