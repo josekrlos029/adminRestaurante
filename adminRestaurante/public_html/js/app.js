@@ -145,6 +145,7 @@ function aceptar() {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
         $("#close1").click();
+        cargarPedidios();
 
     });
 }
@@ -172,7 +173,7 @@ function rechazar() {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
     });
-    $("#close2").click
+    $("#close2").click();
     cargarPedidios();
 
 }
@@ -200,6 +201,7 @@ function cancelar() {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
         $("#close3").click();
+        cargarPedidios();
     });
 }
 
@@ -226,6 +228,7 @@ function listo() {
             alert("Error en el servidor, contactate con la empresa TuDomicilio ");
         }
         $("#close4").click();
+        cargarPedidios();
 
     });
 }
