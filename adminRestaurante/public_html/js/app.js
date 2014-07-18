@@ -103,7 +103,7 @@ function popCancelar(idDomicilio) {
     $("#idCancelar").val(idDomicilio);
 }
 
-function popUbicacion(idDomicilio) {
+function popListo(idDomicilio) {
     $("#idListo").val(idDomicilio);
 }
 
