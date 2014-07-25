@@ -377,6 +377,8 @@ function consultarEstado(){
             $("#abrir").hide();
         } else if (json.estado == "c") {
             $("#cerrar").hide();
+            alert("Recuerda Abrir el sitio en el menú para que recibas los pedidos");
+            $("#tt").text("Sitio Cerrado");
         }
         $.mobile.loading("hide");
 
@@ -384,9 +386,82 @@ function consultarEstado(){
 }
 
 function cerrarSitio(){
-    
+    var $this = $(this),
+            theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData("textonly");
+    html = $this.jqmData("html") || "";
+    $.mobile.loading("show", {
+        text: msgText,
+        textVisible: textVisible,
+        theme: theme,
+        textonly: textonly,
+        html: html
+    });
+    var data = {
+        idRestaurante: localStorage.getItem("idRestaurante"),
+        estado: "c"
+    };
+    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoRestaurante";
+    //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    }).done(function(msg) {
+
+        var json = eval("(" + msg + ")");
+        if (json.msj == "exito") {
+            alert("Sitio Cerrado Exitosamente");
+            location.href ="home.html";
+        } else if (json.msj == "no") {
+            alert("Error en el servidor, intenta nuevamente");
+        } else {
+            alert("Error en el servidor, contactate con la empresa TuDomicilio ");
+        }
+        
+        $.mobile.loading("hide");
+});
+
 }
 
 function abrirSitio(){
+    var $this = $(this),
+            theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData("textonly");
+    html = $this.jqmData("html") || "";
+    $.mobile.loading("show", {
+        text: msgText,
+        textVisible: textVisible,
+        theme: theme,
+        textonly: textonly,
+        html: html
+    });
+    var data = {
+        idRestaurante: localStorage.getItem("idRestaurante"),
+        estado: "a"
+    };
+    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoRestaurante";
+    //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    }).done(function(msg) {
+
+        var json = eval("(" + msg + ")");
+        if (json.msj == "exito") {
+            alert("Sitio Abierto Exitosamente, atento a los pedidos ! ");
+            location.href ="home.html";
+        } else if (json.msj == "no") {
+            alert("Error en el servidor, intenta nuevamente");
+        } else {
+            alert("Error en el servidor, contactate con la empresa TuDomicilio ");
+        }
         
+        $.mobile.loading("hide");
+});    
 }
