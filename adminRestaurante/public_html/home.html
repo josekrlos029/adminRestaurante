@@ -172,7 +172,11 @@ and open the template in the editor.
                 <a href="#" onclick="cargarPedidios()" style="border: none; background-color: #cc0000;  box-shadow: none;" class="ui-nodisc-icon ui-btn ui-shadow ui-corner-all ui-icon-refresh ui-btn-icon-notext ui-btn-a ui-btn-inline">Buscar</a>
             </div>
             <div data-role="panel" data-display="overlay" id="menu">
-                <p>Menù !</p>
+                <ul data-role="listview">
+                    <li data-icon="home"><a data-ajax="false" href="home.html">Inicio</a></li>
+                    <li data-icon="shop"><a id="iniciar" data-ajax="false" href="mostrarRestaurante.html">Gestionar Menú</a></li>
+                    <li data-icon="power"><a data-ajax="false" id="cerrar" href="#" onclick="cerrarSitio()">Cerrar Sitio</a></li>
+                </ul>
             </div><!-- /panel -->
             <div role="main" class="ui-content">                
                 <div class="ui-body ui-body-a ui-corner-all">
