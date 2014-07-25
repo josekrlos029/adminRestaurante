@@ -15,7 +15,7 @@ function update() {
             regId: regid,
             idRestaurante: idRestaurante
         };
-    }else{
+    } else {
         var data = {
             token: localStorage.getItem("token"),
             idRestaurante: idRestaurante
@@ -91,7 +91,7 @@ function cargarPedidios() {
 
 }
 
-function pop(idProducto){
+function pop(idProducto) {
     $("#idProducto").val(idProducto);
     var $this = $(this),
             theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
@@ -118,9 +118,9 @@ function pop(idProducto){
         data: data
     }).done(function(msg) {
         var json = eval("(" + msg + ")");
-        if(json.estado == "d"){
+        if (json.estado == "d") {
             $("#btnInhabilitar").show();
-        }else if(json.estado == "n"){
+        } else if (json.estado == "n") {
             $("#btnHabilitar").show();
         }
         $.mobile.loading("hide");
@@ -128,8 +128,8 @@ function pop(idProducto){
     });
 }
 
-function habilitar(){
-    
+function habilitar() {
+
     var $this = $(this),
             theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
             msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
@@ -156,18 +156,18 @@ function habilitar(){
         data: data
     }).done(function(msg) {
         var json = eval("(" + msg + ")");
-        if(json.msj == "exito"){
+        if (json.msj == "exito") {
             alert("Estado cambiado a activo Correctamente");
             $("#close").show();
-        }else if(json.estado == "n"){
+        } else if (json.estado == "n") {
             alert("Error en el servidor, contactate con TuDomicilio");
         }
         $.mobile.loading("hide");
     });
 }
 
-function inhabilitar(){
-    
+function inhabilitar() {
+
     var $this = $(this),
             theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
             msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
@@ -194,10 +194,10 @@ function inhabilitar(){
         data: data
     }).done(function(msg) {
         var json = eval("(" + msg + ")");
-        if(json.msj == "exito"){
+        if (json.msj == "exito") {
             alert("Estado cambiado a inactivo Correctamente");
             $("#close").show();
-        }else if(json.estado == "n"){
+        } else if (json.estado == "n") {
             alert("Error en el servidor, contactate con TuDomicilio");
         }
         $.mobile.loading("hide");
@@ -345,4 +345,9 @@ function listo() {
         cargarPedidios();
 
     });
+}
+
+function close() {
+    $("#btnHabilitar").hide();
+    $("#btnInhabilitar").hide();
 }
