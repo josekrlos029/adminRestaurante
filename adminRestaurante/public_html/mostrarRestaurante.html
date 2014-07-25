@@ -47,7 +47,8 @@ and open the template in the editor.
                     textonly: textonly,
                     html: html
                 });
-
+                $("#btnHabilitar").hide();
+                $("#btnInhabilitar").hide();
                 var pushNotification = window.plugins.pushNotification;
 
                 if (device.platform == 'android' || device.platform == 'Android')

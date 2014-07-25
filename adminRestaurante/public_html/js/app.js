@@ -123,6 +123,7 @@ function pop(idProducto){
         }else if(json.estado == "n"){
             $("#btnHabilitar").show();
         }
+        $.mobile.loading("hide");
 
     });
 }
@@ -161,7 +162,7 @@ function habilitar(){
         }else if(json.estado == "n"){
             alert("Error en el servidor, contactate con TuDomicilio");
         }
-
+        $.mobile.loading("hide");
     });
 }
 
@@ -199,6 +200,7 @@ function inhabilitar(){
         }else if(json.estado == "n"){
             alert("Error en el servidor, contactate con TuDomicilio");
         }
+        $.mobile.loading("hide");
 
     });
 }
