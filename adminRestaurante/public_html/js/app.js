@@ -91,6 +91,118 @@ function cargarPedidios() {
 
 }
 
+function pop(idProducto){
+    $("#idProducto").val(idProducto);
+    var $this = $(this),
+            theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData("textonly");
+    html = $this.jqmData("html") || "";
+    $.mobile.loading("show", {
+        text: msgText,
+        textVisible: textVisible,
+        theme: theme,
+        textonly: textonly,
+        html: html
+    });
+
+    var data = {
+        idProducto: idProducto
+    };
+    var url = "http://tudomicilio.liceogalois.com/restaurante/consultarEstadoProducto";
+    //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    }).done(function(msg) {
+        var json = eval("(" + msg + ")");
+        if(json.estado == "d"){
+            $("#btnInhabilitar").show();
+        }else if(json.estado == "n"){
+            $("#btnHabilitar").show();
+        }
+
+    });
+}
+
+function habilitar(){
+    
+    var $this = $(this),
+            theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData("textonly");
+    html = $this.jqmData("html") || "";
+    $.mobile.loading("show", {
+        text: msgText,
+        textVisible: textVisible,
+        theme: theme,
+        textonly: textonly,
+        html: html
+    });
+
+    var data = {
+        idProducto: $("#idProducto").val(),
+        estado: 'd'
+    };
+    var url = "http://tudomicilio.liceogalois.com/restaurante/modificarEstadoProducto";
+    //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    }).done(function(msg) {
+        var json = eval("(" + msg + ")");
+        if(json.msj == "exito"){
+            alert("Estado cambiado a activo Correctamente");
+            $("#close").show();
+        }else if(json.estado == "n"){
+            alert("Error en el servidor, contactate con TuDomicilio");
+        }
+
+    });
+}
+
+function inhabilitar(){
+    
+    var $this = $(this),
+            theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData("textonly");
+    html = $this.jqmData("html") || "";
+    $.mobile.loading("show", {
+        text: msgText,
+        textVisible: textVisible,
+        theme: theme,
+        textonly: textonly,
+        html: html
+    });
+
+    var data = {
+        idProducto: $("#idProducto").val(),
+        estado: 'n'
+    };
+    var url = "http://tudomicilio.liceogalois.com/restaurante/modificarEstadoProducto";
+    //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    }).done(function(msg) {
+        var json = eval("(" + msg + ")");
+        if(json.msj == "exito"){
+            alert("Estado cambiado a inactivo Correctamente");
+            $("#close").show();
+        }else if(json.estado == "n"){
+            alert("Error en el servidor, contactate con TuDomicilio");
+        }
+
+    });
+}
+
 function popAceptar(idDomicilio) {
     $("#idAceptar").val(idDomicilio);
 }
