@@ -48,6 +48,7 @@ and open the template in the editor.
             function onDeviceReady() {
                 update();
                 cargarPedidios();
+                consultarEstado();
 
                 var pushNotification = window.plugins.pushNotification;
 
@@ -175,6 +176,7 @@ and open the template in the editor.
                 <ul data-role="listview">
                     <li data-icon="home"><a data-ajax="false" href="home.html">Inicio</a></li>
                     <li data-icon="shop"><a id="iniciar" data-ajax="false" href="mostrarRestaurante.html">Gestionar Menú</a></li>
+                    <li data-icon="power"><a data-ajax="false" id="abrir" href="#" onclick="abrirSitio()">Abrir Sitio</a></li>
                     <li data-icon="power"><a data-ajax="false" id="cerrar" href="#" onclick="cerrarSitio()">Cerrar Sitio</a></li>
                 </ul>
             </div><!-- /panel -->

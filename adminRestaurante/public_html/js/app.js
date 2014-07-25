@@ -347,7 +347,46 @@ function listo() {
     });
 }
 
-function close() {
-    $("#btnHabilitar").hide();
-    $("#btnInhabilitar").hide();
+function consultarEstado(){
+    var $this = $(this),
+            theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+            msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+            textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+            textonly = !!$this.jqmData("textonly");
+    html = $this.jqmData("html") || "";
+    $.mobile.loading("show", {
+        text: msgText,
+        textVisible: textVisible,
+        theme: theme,
+        textonly: textonly,
+        html: html
+    });
+
+    var data = {
+        idRestaurante: localStorage.getItem("idRestaurante")
+    };
+    var url = "http://tudomicilio.liceogalois.com/restaurante/consultarEstadoRestaurante";
+    //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data
+    }).done(function(msg) {
+        var json = eval("(" + msg + ")");
+        if (json.estado == "a") {
+            $("#abrir").hide();
+        } else if (json.estado == "c") {
+            $("#cerrar").hide();
+        }
+        $.mobile.loading("hide");
+
+    });
+}
+
+function cerrarSitio(){
+    
+}
+
+function abrirSitio(){
+        
 }
