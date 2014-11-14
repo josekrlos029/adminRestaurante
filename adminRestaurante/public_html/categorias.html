@@ -118,6 +118,7 @@ and open the template in the editor.
                     type: "POST",
                     url: url,
                     data: {
+                        idRestaurante: localStorage.getItem("idRestaurante");
                         nombre: $("#nombre").val()
                     }
                 }).done(function(msg) {
@@ -165,7 +166,7 @@ and open the template in the editor.
             <div role="main" class="ui-content">
                 <h3>Categorías</h3>
                 <br>
-                <div id="gestion" hidden>
+                <div id="gestion">
                     <center><h3 id="cat"></h3></center>
                     <h4>Agregar Categoría</h4>
                     <div class="ui-field-contain">
