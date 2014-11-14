@@ -53,122 +53,10 @@ and open the template in the editor.
                 });
                 
                 limpiarPop();
-                var pushNotification = window.plugins.pushNotification;
-
-                if (device.platform == 'android' || device.platform == 'Android')
-                {
-                    //PARA ANDROID
-                    pushNotification.register(
-                            successHandler,
-                            errorHandler, {
-                                "senderID": "616270198580", //ID del proyecto  (Debes crear un proyecto en google developers -> https://console.developers.google.com/project )
-                                "ecb": "onNotificationGCM"  //Metodo cuando llega una notificación
-                            });
-                }
-                else
-                {
-                    //Para IOS
-                    pushNotification.register(
-                            tokenHandler,
-                            errorHandler, {
-                                "badge": "true",
-                                "sound": "true",
-                                "alert": "true",
-                                "ecb": "onNotificationAPN"
-                            });
-                }
-
+                
                 cargarRestaurantes();
 
             }
-
-            function tokenHandler(result) {
-                // Your iOS push server needs to know the token before it can push to this device
-                // here is where you might want to send it the token for later use.
-                localStorage.setItem("token", result);
-            }
-
-
-            function successHandler(result) {
-                //alert('result = ' + result);
-            }
-
-            function errorHandler(error) {
-                alert('error = ' + error);
-            }
-
-            function onNotificationGCM(e) {
-
-                switch (e.event)
-                {
-                    case 'registered':
-                        if (e.regid.length > 0)
-                        {
-                            localStorage.setItem("regId", e.regid);
-                            update();
-                        }
-                        break;
-
-                    case 'message':
-                        // if this flag is set, this notification happened while we were in the foreground.
-                        // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-                        if (e.foreground)
-                        {
-
-                            //$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
-
-                            // if the notification contains a soundname, play it.
-                            alert("Tienes un nuevo pedido");
-
-                        }
-                        else
-                        {  // otherwise we were launched because the user touched a notification in the notification tray.
-
-                            if (e.coldstart)
-                            {
-                                //$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
-                                alert("Tienes un nuevo pedido");
-                            }
-                            else
-                            {
-                                //$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
-                                alert("Tienes un nuevo pedido");
-                            }
-                        }
-                        //alert(e.payload.message + ",  " + e.payload.otro ); 
-                        //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
-                        //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
-                        break;
-
-                    case 'error':
-                        alert('Error: ' + e.msg);
-                        break;
-
-                    default:
-                        //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
-                        break;
-                }
-
-            }
-
-            function onNotificationAPN(event) {
-                if (event.alert)
-                {
-                    navigator.notification.alert(event.alert);
-                }
-
-                if (event.sound)
-                {
-                    var snd = new Media(event.sound);
-                    snd.play();
-                }
-
-                if (event.badge)
-                {
-                    pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-                }
-            }
-
 
             function cargarRestaurantes() {
                 var $this = $(this),
@@ -206,49 +94,6 @@ and open the template in the editor.
 
             }
 
-            function mostrarProductos(id, nombre) {
-
-                var $this = $(this),
-                        theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
-                        msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
-                        textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
-                        textonly = !!$this.jqmData("textonly");
-                html = $this.jqmData("html") || "";
-                $.mobile.loading("show", {
-                    text: msgText,
-                    textVisible: textVisible,
-                    theme: theme,
-                    textonly: textonly,
-                    html: html
-                });
-
-                $("#cat").text(nombre);
-                $("#idCategoria").val(id);
-
-                var url = "http://admin.tudomicilio.net/restaurante/listaProductos";
-                //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        idCategoria: id
-                    }
-                }).done(function(msg) {
-
-                    $("#prod").html(msg);
-                    setTimeout(function() {
-                        $("#prod").show();
-                        $("#gestion").show();
-                        $('#lista2').listview();
-                        $('#lista2').listview('refresh');
-                        $.mobile.loading("hide");
-                    }, 1000);
-
-                });
-
-
-            }
-
             function agregarProducto() {
                 var $this = $(this),
                         theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
@@ -267,24 +112,21 @@ and open the template in the editor.
                 var nombre = $("#cat").text();
                 var idCategoria = $("#idCategoria").val();
 
-                var url = "http://admin.tudomicilio.net/restaurante/guardarProducto";
+                var url = "http://admin.tudomicilio.net/restaurante/guardarCategoria";
                 //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
                 $.ajax({
                     type: "POST",
                     url: url,
                     data: {
-                        idCategoria: idCategoria,
-                        nombre: $("#nombre").val(),
-                        descripcion: $("#descripcion").val(),
-                        precio: $("#precio").val()
+                        nombre: $("#nombre").val()
                     }
                 }).done(function(msg) {
                     var json = eval("(" + msg + ")");
                     if (json.msj == "exito") {
-                        alert("Producto Agregado Correctamente");
+                        alert("Categoría Agregadz Correctamente");
                         mostrarProductos(idCategoria, nombre);
                     } else if (json.msj == "no") {
-                        alert("Error al guardar Producto, intenta nuevamente");
+                        alert("Error al guardar Categoría, intenta nuevamente");
                     } else {
                         alert("Error en el servidor, contactate con la empresa TuDomicilio ");
                     }
@@ -322,26 +164,17 @@ and open the template in the editor.
 
             <div role="main" class="ui-content">
                 <h3>Categorías</h3>
-                <div id="cont"></div>
                 <br>
                 <div id="gestion" hidden>
                     <center><h3 id="cat"></h3></center>
-                    <h4>Agregar Producto</h4>
+                    <h4>Agregar Categoría</h4>
                     <div class="ui-field-contain">
                         <label for="nombre"><b>Nombre</b></label>
                         <input type="text" name="nombre" id="nombre" value="">
                     </div>
-                    <div class="ui-field-contain">
-                        <label for="descripcion"><b>Descripcion</b></label>
-                        <input type="text" name="descripcion" id="descripcion" value="">
-                    </div>
-                    <div class="ui-field-contain">
-                        <label for="precio"><b>Precio</b></label>
-                        <input type="number" name="precio" id="precio" value="">
-                    </div>
-                    <input type="hidden" id="idCategoria">
                     <a style="background-color: #84aa1f; color: white; text-decoration: none;text-shadow: none" href="#" onclick="agregarProducto();" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-icon-check ui-btn-icon-right">Agregar</a>
                 </div>
+                <div id="cont"></div>
                 <br>
                 <div id="prod" hidden></div>
                 <div data-role="popup" id="popup" data-dismissible="false" data-overlay-theme="b" data-theme="b" class="ui-corner-all">
