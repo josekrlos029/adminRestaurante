@@ -26,7 +26,7 @@ function update() {
         };
     }
 
-    var url = "http://tudomicilio.liceogalois.com/restaurante/updateRegId";
+    var url = "http://admin.tudomicilio.net/restaurante/updateRegId";
     //var url = "http://192.168.1.33/domicilios/restaurante/updateRegId";
     $.ajax({
         type: "POST",
@@ -69,7 +69,7 @@ function cargarPedidios() {
     var data = {
         idRestaurante: idRestaurante
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/domicilios";
+    var url = "http://admin.tudomicilio.net/restaurante/domicilios";
     //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
     $.ajax({
         type: "POST",
@@ -114,7 +114,7 @@ function pop(idProducto) {
     var data = {
         idProducto: idProducto
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/consultarEstadoProducto";
+    var url = "http://admin.tudomicilio.net/restaurante/consultarEstadoProducto";
     //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
     $.ajax({
         type: "POST",
@@ -152,7 +152,7 @@ function habilitar() {
         idProducto: $("#idProducto").val(),
         estado: 'd'
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/modificarEstadoProducto";
+    var url = "http://admin.tudomicilio.net/restaurante/modificarEstadoProducto";
     //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
     $.ajax({
         type: "POST",
@@ -190,7 +190,7 @@ function inhabilitar() {
         idProducto: $("#idProducto").val(),
         estado: 'n'
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/modificarEstadoProducto";
+    var url = "http://admin.tudomicilio.net/restaurante/modificarEstadoProducto";
     //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
     $.ajax({
         type: "POST",
@@ -246,7 +246,7 @@ function aceptar() {
         idDomicilio: idDomicilio,
         estado: "a"
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
+    var url = "http://admin.tudomicilio.net/restaurante/cambiarEstadoDomicilio";
     //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
@@ -274,7 +274,7 @@ function rechazar() {
         idDomicilio: idDomicilio,
         estado: "n"
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
+    var url = "http://admin.tudomicilio.net/restaurante/cambiarEstadoDomicilio";
     //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
@@ -302,7 +302,7 @@ function cancelar() {
         idDomicilio: idDomicilio,
         estado: "c"
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
+    var url = "http://admin.tudomicilio.net/restaurante/cambiarEstadoDomicilio";
     //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
@@ -329,7 +329,7 @@ function listo() {
         idDomicilio: idDomicilio,
         estado: "l"
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoDomicilio";
+    var url = "http://admin.tudomicilio.net/restaurante/cambiarEstadoDomicilio";
     //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
@@ -369,7 +369,7 @@ function consultarEstado(){
     var data = {
         idRestaurante: localStorage.getItem("idRestaurante")
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/consultarEstadoRestaurante";
+    var url = "http://admin.tudomicilio.net/restaurante/consultarEstadoRestaurante";
     //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
     $.ajax({
         type: "POST",
@@ -407,7 +407,7 @@ function cerrarSitio(){
         idRestaurante: localStorage.getItem("idRestaurante"),
         estado: "c"
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoRestaurante";
+    var url = "http://admin.tudomicilio.net/restaurante/cambiarEstadoRestaurante";
     //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
@@ -448,7 +448,7 @@ function abrirSitio(){
         idRestaurante: localStorage.getItem("idRestaurante"),
         estado: "a"
     };
-    var url = "http://tudomicilio.liceogalois.com/restaurante/cambiarEstadoRestaurante";
+    var url = "http://admin.tudomicilio.net/restaurante/cambiarEstadoRestaurante";
     //var url = "http://192.168.1.33/domicilios/restaurante/cambiarEstadoDomicilio";
     $.ajax({
         type: "POST",
