@@ -389,6 +389,13 @@ function consultarEstado(){
     });
 }
 
+function cerrarSesion(){
+    
+    localStorage.setItem("idRestaurante", "");
+    location.href= "index.html";
+    
+}
+
 function cerrarSitio(){
     var $this = $(this),
             theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
