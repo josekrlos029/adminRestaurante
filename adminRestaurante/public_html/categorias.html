@@ -123,10 +123,48 @@ and open the template in the editor.
                 }).done(function(msg) {
                     var json = eval("(" + msg + ")");
                     if (json.msj == "exito") {
-                        alert("Categoría Agregadz Correctamente");
-                        mostrarProductos(idCategoria, nombre);
+                        alert("Categoría Agregada Correctamente");
+                        location.href = "categorias.html";
                     } else if (json.msj == "no") {
                         alert("Error al guardar Categoría, intenta nuevamente");
+                    } else {
+                        alert("Error en el servidor, contactate con la empresa TuDomicilio ");
+                    }
+                    $.mobile.loading("hide");
+                });
+
+            }
+            
+            function eliminarProducto(idCategoria) {
+                var $this = $(this),
+                        theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+                        msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+                        textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+                        textonly = !!$this.jqmData("textonly");
+                html = $this.jqmData("html") || "";
+                $.mobile.loading("show", {
+                    text: msgText,
+                    textVisible: textVisible,
+                    theme: theme,
+                    textonly: textonly,
+                    html: html
+                });
+
+                var url = "http://admin.tudomicilio.net/restaurante/eliminarCategoria";
+                //var url = "http://192.168.1.33/domicilios/restaurante/domicilios";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {
+                        idCategoria: idCategoria
+                    }
+                }).done(function(msg) {
+                    var json = eval("(" + msg + ")");
+                    if (json.msj == "exito") {
+                        alert("Categoría Eliminada Correctamente");
+                        location.href = "categorias.html";
+                    } else if (json.msj == "no") {
+                        alert("Error al eliminar Categoría, intenta nuevamente");
                     } else {
                         alert("Error en el servidor, contactate con la empresa TuDomicilio ");
                     }
